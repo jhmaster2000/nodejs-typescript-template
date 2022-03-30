@@ -1,14 +1,12 @@
 {
   "name": "tsmodules",
-  "version": "1.1.0",
-  "description": "TypeScript project template to import modules without extension, and modules with default exports that use node built-ins",
+  "version": "1.0.0",
+  "description": "Modern TypeScript project template",
   "keywords": [
     "typescript",
     "modules",
-    "es modules",
-    "esnext",
-    "influxdb",
-    "apollo-server"
+    "esm",
+    "esnext"
   ],
   "license": "MIT",
   "author": "dandv",
@@ -21,9 +19,7 @@
     "start": "node --experimental-specifier-resolution=node -r source-map-support/register run.js",
     "test": "node node_modules/.bin/jest"
   },
-  "dependencies": {
-    "influx": "^5.6.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/jest": "^26.0.7",
     "@types/node": "^14.0.26",
