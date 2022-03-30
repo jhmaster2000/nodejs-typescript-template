@@ -13,10 +13,12 @@
     "type": "module",
     "main": "dist/main.js",
     "scripts": {
+        "ts": "node --experimental-specifier-resolution=node --loader ts-node/esm --no-warnings src/main.ts",
+        "js": "npm run build && npm start",
         "start": "node --experimental-specifier-resolution=node -r source-map-support/register dist/main.js",
         "build": "npm run clean && tsc",
-        "test": "jest --coverage",
         "clean": "node -e \"fs.rm('dist', { recursive: true }, () => {})\"",
+        "test": "jest --coverage",
         "lint": "eslint src/**/*.ts tests/**/*.ts",
         "lint-fix": "eslint --fix src/**/*.ts tests/**/*.ts"
     },
