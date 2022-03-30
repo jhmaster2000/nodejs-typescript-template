@@ -11,7 +11,7 @@
     "license": "MIT",
     "author": "jhmaster",
     "type": "module",
-    "main": "run.js",
+    "main": "dist/main.js",
     "scripts": {
         "build": "npm run clean && tsc",
         "clean": "rm -f *.js *.js.map",
