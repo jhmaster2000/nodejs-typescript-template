@@ -13,11 +13,12 @@
     "type": "module",
     "main": "dist/main.js",
     "scripts": {
-        "build": "npm run clean && tsc",
-        "clean": "rm -f *.js *.js.map",
-        "lint": "eslint src/**/*.ts",
         "start": "node --experimental-specifier-resolution=node -r source-map-support/register dist/main.js",
-        "test": "jest"
+        "build": "npm run clean && tsc",
+        "test": "jest",
+        "clean": "node -e \"fs.rm('dist', { recursive: true }, () => {})\"",
+        "lint": "eslint src/**/*.ts tests/**/*.ts",
+        "lint-fix": "eslint --fix src/**/*.ts tests/**/*.ts"
     },
     "devDependencies": {
         "@types/jest": "^27.4.1",
