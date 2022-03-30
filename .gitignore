@@ -1,4 +1,5 @@
 node_modules
+coverage
 dist
 *.js
 *.js.map

@@ -15,7 +15,7 @@
     "scripts": {
         "start": "node --experimental-specifier-resolution=node -r source-map-support/register dist/main.js",
         "build": "npm run clean && tsc",
-        "test": "jest",
+        "test": "jest --coverage",
         "clean": "node -e \"fs.rm('dist', { recursive: true }, () => {})\"",
         "lint": "eslint src/**/*.ts tests/**/*.ts",
         "lint-fix": "eslint --fix src/**/*.ts tests/**/*.ts"
