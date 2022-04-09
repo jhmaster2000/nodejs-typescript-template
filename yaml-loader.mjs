@@ -5,19 +5,25 @@ import { promises as fs } from 'fs';
 import { fileURLToPath } from 'url';
 import yaml from 'yaml';
 
+const logger = /** @type {const} */ ({
+    enabled: false,
+    get log() { return this.enabled ? console.log : () => {} },
+    get dir() { return this.enabled ? console.dir : () => {} }
+});
+
 /** @type {resolve} */
 export async function resolve(specifier, context, defaultResolve) {
     const result = await defaultResolve(specifier, context, defaultResolve);
     const child = new URL(result.url);
 
     if (context.parentURL !== undefined) {
-        console.log('\n-----[ESM RESOLVER DEBUG]-----');
-        console.log('specifier:', specifier);
-        console.log('context.parentURL:', context.parentURL);
-        console.log('context.conditions:', context.conditions);
-        console.log('result.url:', result.url);
-        console.log('child:', child);
-        console.log('-----[END RESOLVER DEBUG]-----\n');
+        logger.log('\n-----[ESM RESOLVER DEBUG]-----');
+        logger.log('specifier:', specifier);
+        logger.log('context.parentURL:', context.parentURL);
+        logger.log('context.conditions:', context.conditions);
+        logger.log('result.url:', result.url);
+        logger.log('child:', child);
+        logger.log('-----[END RESOLVER DEBUG]-----\n');
     }
 
     // Ignore built-in modules and the `node_modules` folder.
@@ -36,10 +42,10 @@ export async function resolve(specifier, context, defaultResolve) {
 /** @type {load} */
 export async function load(url, context, defaultLoad) {
     if (context.format !== 'main') {
-        console.log('\n-----[ESM LOADER DEBUG]-----');
-        console.log('url:', url);
-        console.log('context:', context);
-        console.log('-----[END LOADER DEBUG]-----\n');
+        logger.log('\n-----[ESM LOADER DEBUG]-----');
+        logger.log('url:', url);
+        logger.log('context:', context);
+        logger.log('-----[END LOADER DEBUG]-----\n');
     }
     // Clear up main module hint as it's not a real supported hint and will break loaders down the line if kept.
     if (context.format === 'main') context.format = undefined;
@@ -56,16 +62,16 @@ export async function load(url, context, defaultLoad) {
 
 /** @type {globalPreload} */
 export function globalPreload() {
-    console.log('\n-----[ESM GLOBAL PRELOAD DEBUG]-----');
-    //!@upcoming console.log('utilities:', utilities);
-    console.log('-----[END GLOBAL PRELOAD DEBUG]-----\n');
+    logger.log('\n-----[ESM GLOBAL PRELOAD DEBUG]-----');
+    //!@upcoming logger.log('utilities:', utilities);
+    logger.log('-----[END GLOBAL PRELOAD DEBUG]-----\n');
 
     /** @ambient @type {getBuiltin} */ let getBuiltin;
 
     return (() => {
         //@ts-ignore
         global.someInjectedProperty = 42;
-        console.log('Hello from preloaded code!');
+        logger.log('Hello from preloaded code!');
   
         const { createRequire } = getBuiltin('module');  
         const require = createRequire(process.cwd() + '/<preload>');
