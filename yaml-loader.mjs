@@ -7,7 +7,7 @@ import yaml from 'yaml';
 
 /** @type {resolve} */
 export async function resolve(specifier, context, defaultResolve) {
-    const result = defaultResolve(specifier, context, defaultResolve);
+    const result = await defaultResolve(specifier, context, defaultResolve);
     const child = new URL(result.url);
 
     if (context.parentURL !== undefined) {
@@ -41,6 +41,8 @@ export async function load(url, context, defaultLoad) {
         console.log('context:', context);
         console.log('-----[END LOADER DEBUG]-----\n');
     }
+    // Clear up main module hint as it's not a real supported hint and will break loaders down the line if kept.
+    if (context.format === 'main') context.format = undefined;
 
     // Perform custom loading for YAML files.
     if (context.format === 'yaml') return {

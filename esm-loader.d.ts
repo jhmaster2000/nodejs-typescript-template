@@ -1,6 +1,12 @@
 export {};
 
-declare global {   
+declare global {
+    interface Loader {
+        resolve?: resolve;
+        load?: load;
+        globalPreload?: globalPreload;
+    }
+
     type TypedArray = Int8Array | Uint8Array | Uint8ClampedArray | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array | BigInt64Array | BigUint64Array;
 
     /**
@@ -43,7 +49,7 @@ declare global {
         /**
          * @param specifier The string in an `import` statement or `import()` expression.
          */
-        type Function = (specifier: string, context: Resolve.Context, resolver: Resolve.Function) => Resolve.Return;
+        type Function = (specifier: string, context: Resolve.Context, resolver: Resolve.Function) => Promise<Resolve.Return>;
     }
 
     /**
@@ -65,7 +71,7 @@ declare global {
             source: string | ArrayBuffer | SharedArrayBuffer | TypedArray | Buffer;
         }
 
-        type Function = (url: string, context: Load.Context, loader: Load.Function) => Load.Return;
+        type Function = (url: string, context: Load.Context, loader: Load.Function) => Promise<Load.Return>;
     }
 
     /**
