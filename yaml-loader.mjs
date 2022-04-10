@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 import yaml from 'yaml';
 
 const logger = /** @type {const} */ ({
-    enabled: false,
+    enabled: true,
     get log() { return this.enabled ? console.log : () => {} },
     get dir() { return this.enabled ? console.dir : () => {} }
 });

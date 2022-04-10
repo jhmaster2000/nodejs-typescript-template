@@ -1,5 +1,5 @@
-import ENV, { getHostname, getPlatform } from './subfile.js';
-import test from './sample.yml';
+import ENV, { getHostname, getPlatform } from './subfile';
+import test from '../src/sample.yml';
 
 declare global {
     const someInjectedProperty: number;
