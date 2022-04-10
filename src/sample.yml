@@ -1,0 +1,21 @@
+# This is a comment
+
+name: value
+array: [foo, bar]
+
+parent:
+  child:
+    key-with-dashes: and spaces
+
+    nested:
+      array: [14.x, 16.x]
+
+    steps:
+    - hello: sunrise
+    - goodbye: sunset
+      extra: 1234
+      outer:
+        inner: true
+
+    # Mid-file comment
+    - lonely_tag: :(
