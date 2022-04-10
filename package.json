@@ -18,7 +18,7 @@
         "start": "node --experimental-specifier-resolution=node -r source-map-support/register --loader ts-node/esm --loader ./yaml-loader.mjs --loader esmultiloader --no-warnings dist/main.js",
         "build": "npm run clean && tsc",
         "clean": "node -e \"fs.rm('dist', { recursive: true }, () => {})\"",
-        "test": "node --loader ./yaml-loader.mjs node_modules/jest/bin/jest",
+        "test": "node --experimental-vm-modules --experimental-specifier-resolution=node node_modules/jest/bin/jest --coverage",
         "lint": "eslint src/**/*.ts tests/**/*.ts",
         "lint-fix": "eslint --fix src/**/*.ts tests/**/*.ts",
         "sync-tsc": "node -e \"let{readSync:r,writeSync:w}=require('jsonc');let o='compilerOptions';let p='tsconfig.json';let t=r(p);delete t.include;t[o].noEmitOnError=!1;t[o].rootDir='../';t[o].types=[...(t[o].types??[]),'jest'];w('tests/'+p,t,{space:4})\""
