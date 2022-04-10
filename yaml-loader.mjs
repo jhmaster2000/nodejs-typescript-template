@@ -1,4 +1,4 @@
-/// <reference types="./esm-loader" />
+/// <reference types="typings-esm-loader" />
 /// @ts-check
 
 import { promises as fs } from 'fs';
