@@ -2,13 +2,13 @@
     "extends": "../tsconfig.json",
     "compilerOptions": {
         "rootDir": "../",
+        "outDir": "./dist",
         "types": [
             "node",
             "../esm-loader-exts",
             "mocha"
         ],
-        "outDir": "./dist",
-        "noEmitOnError": false,
+        "noEmitOnError": false
     },
     "include": ["./", "./**/*.json"]
 }
