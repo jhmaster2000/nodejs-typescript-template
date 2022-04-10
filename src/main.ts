@@ -8,7 +8,8 @@ declare global {
 console.log(`Hello ${getPlatform()}!`);
 console.log(`Hostname: ${getHostname()}`);
 console.log(test);
-console.log(test.parent.child);
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+console.log(test.parent?.child);
 console.log(someInjectedProperty);
 console.log(import.meta.url);
 

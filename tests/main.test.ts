@@ -1,18 +1,21 @@
+import assert from 'assert/strict';
 import envVarExists from '../src/main';
 import { getHostname, getPlatform } from '../src/subfile';
 
-test('env var exists', () => {
-    expect(envVarExists('PATH')).toBe(true);
-});
+describe('Test Example', () => {
+    it('env var exists', () => {
+        assert.equal(envVarExists('PATH'), true);
+    });
 
-test('env var does not exist', () => {
-    expect(envVarExists('accordingtoallknownlawsofaviation')).toBe(false);
-});
+    it('env var does not exist', () => {
+        assert.equal(envVarExists('accordingtoallknownlawsofaviation'), false);
+    });
 
-test('hostname getter', () => {
-    expect(typeof getHostname()).toBe('string');
-});
+    it('hostname getter', () => {
+        assert.equal(typeof getHostname(), 'string');
+    });
 
-test('platform getter', () => {
-    expect(typeof getPlatform()).toBe('string');
+    it('platform getter', () => {
+        assert.equal(typeof getPlatform(), 'string');
+    });
 });

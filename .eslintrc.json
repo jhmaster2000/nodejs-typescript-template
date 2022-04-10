@@ -2,7 +2,7 @@
     "root": true,
     "reportUnusedDisableDirectives": true,
     "parser": "@typescript-eslint/parser",
-    "env": { "node": true, "es6": true, "jest/globals": true },
+    "env": { "node": true, "es6": true },
     "parserOptions": {
         "warnOnUnsupportedTypeScriptVersion": false,
         "tsconfigRootDir": "./",
@@ -14,8 +14,7 @@
     "plugins": [
         "@typescript-eslint",
         "deprecation",
-        "unicorn",
-        "jest"
+        "unicorn"
     ],
     "extends": [
         "eslint:recommended",

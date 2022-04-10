@@ -1,2 +1,7 @@
 dist
-/*
+/*.mjs
+/*.cjs
+/*.js
+/*.mts
+/*.cts
+/*.ts
