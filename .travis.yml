@@ -1,0 +1,12 @@
+os: linux
+language: node_js
+node_js:
+  - "14"
+  - "16"
+  - "17"
+
+jobs:
+  include:
+    - stage: coverage
+      node_js: node
+      script: npm run coverage && npm run coveralls
