@@ -21,7 +21,6 @@
         "clean": "node -e \"fs.rm('dist', {recursive:true}, ()=>{})\"",
         "test": "npx mocha",
         "coverage": "npx c8 npm t",
-        "coveralls": "npx c8 report --reporter=text-lcov | npx coveralls",
         "lint": "npx eslint src/**/*.ts tests/**/*.ts",
         "lint-fix": "npm run lint -- --fix"
     },
