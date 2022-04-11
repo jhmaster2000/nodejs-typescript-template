@@ -69,8 +69,8 @@ export function globalPreload() {
         //@ts-ignore
         global.someInjectedProperty = 42;
         console.log('Hello from preloaded code!');
-  
-        const { createRequire } = getBuiltin('module');  
+
+        const { createRequire } = getBuiltin('module');
         const require = createRequire(process.cwd() + '/<preload>');
     }).toString().slice(8, -2);
     /* c8 ignore stop */

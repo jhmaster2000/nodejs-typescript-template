@@ -25,8 +25,8 @@ In [`tsconfig.json`](tsconfig.json), set this in `compilerOptions`:
 
 * run `npm install --save-dev @types/node`
 * in `tsconfig.json` under `compilerOptions`, set
-  * `"moduleResolution": "node"`, so `tsc` can find modules [when targeting ES6+](https://github.com/Microsoft/TypeScript/issues/8189) 
-  * `"types": ["node"]` to avoid errors related to Node built-in modules  
+  * `"moduleResolution": "node"`, so `tsc` can find modules [when targeting ES6+](https://github.com/Microsoft/TypeScript/issues/8189)
+  * `"types": ["node"]` to avoid errors related to Node built-in modules
 
 
 # Import modules that don't have named exports
@@ -56,7 +56,7 @@ However, this will generate `Error TS1192: Module '...' has no default export.` 
 When transpiling, [TypeScript won't generate an extension for you](https://github.com/microsoft/TypeScript/issues/16577). Run Node with the [`node --experimental-specifier-resolution=node` parameter](https://nodejs.org/api/cli.html#cli_experimental_specifier_resolution_mode):
 
     node --experimental-specifier-resolution=node run.js
-    
+
 Otherwise, [node mandates that you specify the extension](https://nodejs.org/api/esm.html#esm_mandatory_file_extensions) in the `import` statement.
 
 
@@ -70,7 +70,7 @@ Add `"type": "module"` to `package.json`, because [TypeScript can't generate fil
 To be able to run `eslint`, we must create an `.eslintrc.json` file. Then, install the required dependencies:
 
     npm i -D eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-plugin-deprecation eslint-plugin-unicorn
- 
+
 
 # Testing with Mocha
 
