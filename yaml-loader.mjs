@@ -7,6 +7,7 @@ import yaml from 'yaml';
 
 const logger = /** @type {const} */ ({
     enabled: false,
+    /* c8 ignore next 2 */
     get log() { return this.enabled ? console.log : () => {} },
     get dir() { return this.enabled ? console.dir : () => {} }
 });
@@ -33,10 +34,7 @@ export async function resolve(specifier, context, defaultResolve) {
     if (/\.ya?ml$/.test(result.url)) return { url: result.url, format: 'yaml' };
 
     // Return the result as-is for all other files.
-    return {
-        url: result.url,
-        format: context.parentURL ? undefined : 'main' // Let the load hook know if this is the main module.
-    };
+    return result;
 }
 
 /** @type {load} */
@@ -47,8 +45,6 @@ export async function load(url, context, defaultLoad) {
         logger.log('context:', context);
         logger.log('-----[END LOADER DEBUG]-----\n');
     }
-    // Clear up main module hint as it's not a real supported hint and will break loaders down the line if kept.
-    if (context.format === 'main') context.format = undefined;
 
     // Perform custom loading for YAML files.
     if (context.format === 'yaml') return {
@@ -68,6 +64,7 @@ export function globalPreload() {
 
     /** @ambient @type {getBuiltin} */ let getBuiltin;
 
+    /* c8 ignore start */
     return (() => {
         //@ts-ignore
         global.someInjectedProperty = 42;
@@ -76,4 +73,5 @@ export function globalPreload() {
         const { createRequire } = getBuiltin('module');  
         const require = createRequire(process.cwd() + '/<preload>');
     }).toString().slice(8, -2);
+    /* c8 ignore stop */
 }
