@@ -18,7 +18,7 @@
         "js": "npm run build && npm start",
         "ts": "npm run node -- --loader ts-node/esm --loader ./yaml-loader.mjs --loader esmultiloader src/main.ts",
         "build": "npm run clean && npx tsc",
-        "clean": "node -e \"fs.rm('dist', {recursive:true}, ()=>{})\"",
+        "clean": "node -e \"fs.rm('dist', {recursive:true}, ()=>{}); fs.rm('coverage', {recursive:true}, ()=>{})\"",
         "test": "npx mocha",
         "coverage": "npx c8 npm t",
         "lint": "npx eslint src/**/*.ts tests/**/*.ts",
