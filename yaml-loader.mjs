@@ -49,6 +49,7 @@ export async function load(url, context, defaultLoad) {
     // Perform custom loading for YAML files.
     if (context.format === 'yaml') return {
         format: 'json',
+        shortCircuit: true,
         source: JSON.stringify(yaml.parse(await fs.readFile(fileURLToPath(url), 'utf8'))),
     };
 
