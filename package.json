@@ -1,22 +1,17 @@
 {
-    "name": "ts-esm-project-template",
-    "version": "1.0.0",
+    "name": "nodejs-typescript-project-template",
+    "version": "0.0.0",
     "description": "Modern TypeScript project template",
-    "keywords": [
-        "typescript",
-        "modules",
-        "esm",
-        "esnext"
-    ],
+    "keywords": [],
     "license": "MIT",
-    "author": "jhmaster",
+    "author": "",
     "type": "module",
     "main": "dist/main.js",
     "scripts": {
         "node": "node --experimental-specifier-resolution=node --no-warnings",
-        "start": "npm run node -- --loader ./yaml-loader.mjs --loader esmultiloader -r source-map-support/register dist/main.js",
+        "start": "npm run node -- --loader ./yaml-loader.mjs -r source-map-support/register dist/main.js",
         "js": "npm run build && npm start",
-        "ts": "npm run node -- --loader ts-node/esm --loader ./yaml-loader.mjs --loader esmultiloader src/main.ts",
+        "ts": "npm run node -- --loader ts-node/esm --loader ./yaml-loader.mjs src/main.ts",
         "build": "npm run clean && npx tsc",
         "clean": "node -e \"fs.rm('dist', {recursive:true}, ()=>{}); fs.rm('coverage', {recursive:true}, ()=>{})\"",
         "test": "npx mocha",
@@ -41,10 +36,9 @@
         "typings-esm-loader": "^1.0.1"
     },
     "engines": {
-        "node": ">=16.0.0"
+        "node": ">=18.0.0"
     },
     "dependencies": {
-        "esmultiloader": "^1.0.0",
         "yaml": "^2.0.0"
     }
 }
