@@ -5,7 +5,6 @@
         "experimental-specifier-resolution=node",
         "loader=ts-node/esm",
         "loader=./yaml-loader.mjs",
-        "loader=esmultiloader",
         "no-warnings"
     ]
 }
